@@ -1,12 +1,17 @@
 fun main(){
-    CurrentAccount(45678,"balanciaga",10000,50.6)
+  var din=  CurrentAccount("23456","balanciaga",10000.00,50.6)
+    din.deposit(2000.00)
+    println(din.balance)
+    din.withdraw(500.00)
+    println(din.balance)
 
 
     var car=product("jeep",45.0,1000,"other")
     var vegetables=product("cabbage",6.0,50,"groceries")
     var health=product("patient",59.0,1000,"hygiene")
-   var x=car
-  println(x)
+    print(car)
+    print(vegetables)
+    println(health)
 
 
 
@@ -20,20 +25,34 @@ fun main(){
 
 }
 //quiz 1
-class CurrentAccount(var accountnumber:Int,var accountname:String,var balance:Int,amount: Double){
+class CurrentAccount(var accountnumber:String,var accountname:String,var balance:Double,amount: Double){
     fun deposit(amount:Double){
-        var x=amount+balance
+        var ongeza=balance
+        balance+=amount
+        println(amount)
     }
- fun withdraw(amount:Double){
+ open fun withdraw(amount:Double){
+//      var decrease=balance
+     balance-=amount
+        println(amount)
+
+
 
  }
     fun details(){
-        var x= ("Account number $accountnumber with balance $balance is operated by $accountname")
+        println("Account number $accountnumber with balance $balance is operated by $accountname")
     }
 }
 
 //quiz 2
-//class SavingAccount
+class SavingAccount(accountnumber: String,accountname: String,balance: Double,var withdrawals:Int){
+     fun withdraw(amount: Double) {
+        if(withdrawals<4){
+
+        }
+    }
+
+}
 
 
 
@@ -41,11 +60,20 @@ class CurrentAccount(var accountnumber:Int,var accountname:String,var balance:In
 //quiz3
 
 data class product(var name:String,var weight:Double,var price:Int,var category:String)
-fun takeProd(name:product){
-    var prd = mutableListOf<product>()
-    name.category
-    println(prd)
+fun takeprdct(product:product){
+
+    var groceriesLists= mutableListOf<product>()
+    var hygieneLists= mutableListOf<product>()
+    var otherLists= mutableListOf<product>()
+    when(product.category){
+        "groceries"-> groceriesLists.add(product)
+        "hygiene"->hygieneLists.add(product)
+        "other"->otherLists.add(product)
+    }
+    println( listOf(product))
+
 }
+
 
 
 //quiz 4
